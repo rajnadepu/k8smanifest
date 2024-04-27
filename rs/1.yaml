@@ -1,1 +1,18 @@
-,dfmkfnfmmf.wfwm.f
+---
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: trail8
+  labels:
+    env: dev
+    app: nginx
+    version: "1.0" 
+spec:
+  containers:
+    - name: httpdcontainer
+      image: httpd:2.4
+      resources:
+        limits:
+          cpu: 1000m
+          memory: 1Gi
+          
