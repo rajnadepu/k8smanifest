@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: alpine1
+spec: 
+  containers:
+    - name: alpinec1 
+      image: alpine:20240329
+

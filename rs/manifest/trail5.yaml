@@ -1,0 +1,46 @@
+---
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: trial5
+spec:
+  containers:
+    - name: jenkins
+      image: jenkins/jenkins:2.440.3-lts
+      resources:
+        requests: 
+          cpu: 500m
+          memory: 256Mi
+        limits:
+          cpu: 1000m
+          memory: 1Gi
+    - name: apache
+      image: httpd:2.4.59
+      resources:
+        requests:
+          cpu: 500m
+          memory: 256Mi
+        limits:
+          cpu: 1000m
+          memory: 1Gi
+    - name: sql
+      image: mysql:8.0-debian
+      args:
+        - sleep
+        - 1d
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: admin123     
+        - name: MYSQL_DATABASE
+          value: emp
+        - name: MYSQL_USER
+          value: nop
+        - name: MYSQL_PASSWORD
+          value: admin123
+      requests:
+        requests:
+          cpu: 500m
+          memory: 256Mi
+        limits:      
+          cpu: 1000m
+          memory: 1Gi
