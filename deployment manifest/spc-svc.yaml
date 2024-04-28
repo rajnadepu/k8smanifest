@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+Kind: Service
+metadata:
+  name: spc-svc
+  labels:
+spec:
+  ports:
+    NodePort: "30001"
+    name: web
+    port: "8080"
+    targetPort: "8080"
+  selector:
+    app: spec
+  type: NodePort
