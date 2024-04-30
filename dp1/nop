@@ -7,6 +7,9 @@ spec:
   containers:
     - name: nop
       image: nopcommerceteam/nopcommerce:4.60.6
+      agrs:
+        - sleep
+        - 1d  
       resources:
         requests: 
           cpu: 500m
