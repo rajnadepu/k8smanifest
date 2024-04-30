@@ -19,17 +19,17 @@ spec:
       name: spc
       labels:
         app: spec
-        version: 1.0
+        version: "1.0"
     spec:
       containers:
         - name: spc1.0
           image: shaikkhajaibrahim/spcjan2024:1.0
           ports:
-            containerPort: "8080"
-            name: spring
+           - containerPort: "8080"
+             name: spring
           resources:
             limits:
-              cpu: 1000mi
+              cpu: 1000m
               memory: 500Gi
 
           
