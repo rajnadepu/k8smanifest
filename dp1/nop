@@ -7,6 +7,8 @@ spec:
   containers:
     - name: nop
       image: nopcommerceteam/nopcommerce:4.60.6
+      ports:
+        - containerPort: "5000"
       resources:
         requests: 
           cpu: 500m
