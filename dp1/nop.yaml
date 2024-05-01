@@ -29,7 +29,7 @@ spec:
       image: mysql:8.0-debian
       args:
         - sleep
-        - 30s
+          30s
       env:
         - name: MYSQL_ROOT_PASSWORD
           value: admin123     
