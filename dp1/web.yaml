@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Pod
 metadata: 
-  name: nop
+  name: web
 spec:
   containers:
      - name: apache
