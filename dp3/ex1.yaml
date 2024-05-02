@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: spc
-          image: httpd 
+          image: shaikkhajaibrahim/spcjan2024:1.0
           livenessProbe:
             httpGet:
               path: /
