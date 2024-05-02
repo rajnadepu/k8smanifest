@@ -31,10 +31,6 @@ spec:
             httpGet:
               path: /admin
               port: 80
-          resources:
-            limits:
-              cpu: 1000m
-              memory: 1000Gi   
-          ports:
+          ports: 
             containerPort: 80
             protocol: TCP         
