@@ -1,0 +1,76 @@
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test
+  labels:
+spec:
+  minReadySeconds: 30
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nop
+      web: apache
+      Db: mysql
+  strategy:
+    rollingUpdate:
+      maxSurge: 
+      maxUnavailable: 
+  template:
+    metadata:
+      name: app
+      labels:
+        app: nop
+        web: apache
+        Db: mysql
+    spec:
+      containers:
+        - name: web
+          image: nginx:stable-perl
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+          readinessProbe:
+            httpGet:
+              path: /admin
+              port: 80
+          ports: 
+           - containerPort: 80
+             protocol: TCP     
+        - name: app
+          image: nopcommerceteam/nopcommerce:4.70.0
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 5000
+          readinessProbe:
+            httpGet:
+              path: /admin
+              port: 5000
+          ports: 
+           - containerPort: 5000
+             protocol: TCP         
+        - name: sql
+          image: mysql:8.4
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /admin
+              port: 3306
+          ports: 
+           - containerPort: 3306
+             protocol: TCP  
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: mysql123
+            - name: MYSQL_DATABASE
+              value: mysql
+            - name: MYSQL_USER    
+              value: mysql
+            - name: MYSQL_PASSWORD
+              value: mysql123
